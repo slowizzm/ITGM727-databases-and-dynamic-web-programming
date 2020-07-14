@@ -27,26 +27,22 @@
           <h3>What super villain once broke Batman's back, leaving him crippled and wheelchair-bound?</h3>
 
           <div>
-            <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-1-answers-A">A. Ra's al Ghul </label>
           </div>
 
           <div>
-            <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-1-answers-B">B. Joker</label>
           </div>
 
           <div>
-            <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-1-answers-C">C. Killer Croc</label>
           </div>
 
           <div>
-            <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-1-answers-D">D. Bane</label>
           </div>
 
@@ -58,26 +54,22 @@
           <h3>Which of these Bat-villains was introduced first?</h3>
 
           <div>
-            <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-2-answers-A">A. The Penguin</label>
           </div>
 
           <div>
-            <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-2-answers-B">B. Catwoman</label>
           </div>
 
           <div>
-            <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-2-answers-C">C. The Riddler</label>
           </div>
 
           <div>
-            <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-2-answers-D">D. Mr. Freeze</label>
           </div>
 
@@ -89,26 +81,22 @@
           <h3>What former District Attorney became the villain known as Two-Face?</h3>
 
           <div>
-            <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-3-answers-A">A. Edward Nygma</label>
           </div>
 
           <div>
-            <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-3-answers-B">B. Harvey Dent</label>
           </div>
 
           <div>
-            <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-3-answers-C">C. Floyd Lawton</label>
           </div>
 
           <div>
-            <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-3-answers-D">D. Jason Blood</label>
           </div>
 
@@ -120,26 +108,22 @@
           <h3>Who killed Jason Todd?</h3>
 
           <div>
-            <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-4-answers-A">A. Two-Face</label>
           </div>
 
           <div>
-            <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-4-answers-B">B. Bane</label>
           </div>
 
           <div>
-            <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-4-answers-C">C. Joker</label>
           </div>
 
           <div>
-            <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-4-answers-D">D. Colton Grundy</label>
           </div>
 
@@ -151,26 +135,22 @@
           <h3>Where does Batman send his most twisted foes for rehabilitation?</h3>
 
           <div>
-            <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-5-answers-A">A. Gotham Prison</label>
           </div>
 
           <div>
-            <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-5-answers-B">B. Arkham Asylum</label>
           </div>
 
           <div>
-            <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-5-answers-C">C. Penhurst Asylum</label>
           </div>
 
           <div>
-            <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D"
-              onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
+            <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" onClick="checkIfSubmitButtonShouldBeEnabled(this)" />
             <label for="question-5-answers-D">D. Greystone Psychiatric Hospital</label>
           </div>
 
@@ -208,8 +188,8 @@
             questionsAnswered[3] &&
             questionsAnswered[4] &&
             username.value) {
-              btn_submit.disabled = false;
-              // console.log('btn enabled');
+            btn_submit.disabled = false;
+            // console.log('btn enabled');
           }
         }
       </script>
@@ -217,8 +197,6 @@
     </form>
 
   </div>
-
-
 </body>
 
 </html>
