@@ -52,7 +52,7 @@
     echo "<div id='results'>" . ucfirst($username) . ", you scored $totalCorrect / $possibleCorrect correct</div>";
 
     //header before displaying correct answers
-    if ($totalCorrect > 0) echo "<div id='info'>Here is what you missed ...</div>";
+    if ($totalCorrect < $possibleCorrect) echo "<div id='info'>Here is what you missed ...</div>";
 
     //display the correct answer(s) if user incorrectly answered
     for ($i = 0; $i < count($incorrect_answers); $i++) echo "<div id='correct-answers'>$incorrect_answers[$i]</div>";
