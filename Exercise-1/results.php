@@ -25,20 +25,20 @@
       'Q4: Correct Answer was C - After Jason is killed by the Joker and resurrected in the Lazarus Pit, he goes on to become the Red Hood.',
       'Q5: Correct Answer was B - Located on the outskirts of Gotham, Arkham Asylum is a psychiatric hospital where many of Batman\'s foes are sent for rehabilitation.'
     ];
-    static $answers = []; //store user answers
-    static $incorrect_answers = []; //store incorrect answers
-    $username = $_POST['name']; // get/store user name
-    $count = 1; //counter used to increment global variable post
+    static $answers = []; //user answers
+    static $incorrect_answers = []; //incorrect answers
+    $username = $_POST['name']; // username
+    $count = 1; //increment global variable POST
     $possibleCorrect = 5; //total questions
-    $totalCorrect = 0; //store total of correct answers
+    $totalCorrect = 0; //total of correct answers
 
-    //add users answers to array
+    //add users answer to array
     for ($i = 0; $i < 5; $i++) {
       $answers[$i] = $_POST["question-" . $count . "-answers"];
       $count++;
     }
 
-    //check user answer against correct answer, if correct increment totalCorrect and set array index to null, if incorrect add correct answer to array to display to user 
+    //compare user answer to key, set index null if correct, add answer value to array if incorrect
     for ($i = 0; $i < 5; $i++) {
       if ($answers[$i] == $answer_keys[$i]) {
         $totalCorrect++;
@@ -48,17 +48,14 @@
       }
     }
 
-    //display number of correct answers
+    //display username and number of correct answers
     echo "<div id='results'>" . ucfirst($username) . ", you scored $totalCorrect / $possibleCorrect correct</div>";
 
-    if ($totalCorrect > 0) {
-      echo "<div id='info'> Here is what you missed ...</div>";
-    }
+    //header before displaying correct answers
+    if ($totalCorrect > 0) echo "<div id='info'>Here is what you missed ...</div>";
 
-    //display the correct answer if user incorrectly answered
-    for ($i = 0; $i < count($incorrect_answers); $i++) {
-      echo "<div id='correct-answers'>$incorrect_answers[$i]</div>";
-    }
+    //display the correct answer(s) if user incorrectly answered
+    for ($i = 0; $i < count($incorrect_answers); $i++) echo "<div id='correct-answers'>$incorrect_answers[$i]</div>";
 
     ?>
 
