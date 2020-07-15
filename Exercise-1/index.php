@@ -26,9 +26,12 @@
       } else {
         session_start();
         $_SESSION['POST'] = $_POST;
-        header("Location: results.php");
+        echo '<script>';
+        echo 'window.location = "results.php";';
+        echo '</script>';
       }
     }
+
     ?>
 
     <p><span class="error">* required field.</span></p>
