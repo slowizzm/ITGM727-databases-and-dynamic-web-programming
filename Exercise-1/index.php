@@ -15,10 +15,35 @@
 
     <h1>Batman Trivia - Quiz</h1>
 
-    <form action="results.php" method="post" id="quiz">
 
-      <label for="name">What is your name?</label>
-      <input type="text" id="name" name="name" onchange="checkIfSubmitButtonShouldBeEnabled(this)"><br><br>
+    <?php
+    // define variables and set to empty values
+    $nameErr = "";
+    $username = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+      } else {
+        session_start();
+        $_SESSION['POST'] = $_POST;
+        header("Location: results.php");
+      }
+    }
+    ?>
+
+    <p><span class="error">* required field.</span></p>
+
+    <!-- </form> -->
+    <form method="post" action="<?php
+                                echo $_SERVER["PHP_SELF"]; ?>">
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" name="name">
+            <span class="error">* <?php echo $nameErr; ?></span>
+          </td>
+        </tr>
+      </table>
 
       <ol>
         <!-- Question 1 -->
@@ -163,36 +188,37 @@
       <p style='margin: 40px 0 0 50px'>
         <input type="submit" value="Submit" class="btn-submit" disabled="true" />
       </p>
+    </form>
 
-      <!-- Enable button if all questions have answer and has name input -->
-      <script>
-        const q = [],
-          QUESTIONS = 5,
-          btn_submit = document.querySelector('input[type="submit"]');
+    <!-- Enable button if all questions have answer-->
+    <script>
+      const q = [],
+        QUESTIONS = 5,
+        btn_submit = document.querySelector('input[type="submit"]');
 
-        let questionsAnswered = [false, false, false, false, false],
-          username = document.querySelector('input[type="text"]');
+      let questionsAnswered = [false, false, false, false, false],
+        username = document.querySelector('input[type="text"]');
 
-        function checkIfSubmitButtonShouldBeEnabled(radio) {
-          //check radio change in each question group
-          if (radio.name === 'question-1-answers') questionsAnswered[0] = true;
-          if (radio.name === 'question-2-answers') questionsAnswered[1] = true;
-          if (radio.name === 'question-3-answers') questionsAnswered[2] = true;
-          if (radio.name === 'question-4-answers') questionsAnswered[3] = true;
-          if (radio.name === 'question-5-answers') questionsAnswered[4] = true;
+      function checkIfSubmitButtonShouldBeEnabled(radio) {
+        //check radio change in each question group
+        if (radio.name === 'question-1-answers') questionsAnswered[0] = true;
+        if (radio.name === 'question-2-answers') questionsAnswered[1] = true;
+        if (radio.name === 'question-3-answers') questionsAnswered[2] = true;
+        if (radio.name === 'question-4-answers') questionsAnswered[3] = true;
+        if (radio.name === 'question-5-answers') questionsAnswered[4] = true;
 
-          //check if all questions have answer and username is inputted
-          if (questionsAnswered[0] &&
-            questionsAnswered[1] &&
-            questionsAnswered[2] &&
-            questionsAnswered[3] &&
-            questionsAnswered[4] &&
-            username.value) {
-            btn_submit.disabled = false;
-            // console.log('btn enabled');
-          }
+        //check if all questions have answer
+        if (questionsAnswered[0] &&
+          questionsAnswered[1] &&
+          questionsAnswered[2] &&
+          questionsAnswered[3] &&
+          questionsAnswered[4]
+        ) {
+          btn_submit.disabled = false;
+          // console.log('btn enabled');
         }
-      </script>
+      }
+    </script>
 
     </form>
 

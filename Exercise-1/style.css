@@ -36,6 +36,10 @@ h1 {
   color: #414a4c;
 }
 
+.error {
+  color: #FF0000;
+}
+
 #results {
   font: 44px "Crimson Text", serif;
 }

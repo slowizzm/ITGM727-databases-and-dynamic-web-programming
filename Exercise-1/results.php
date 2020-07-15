@@ -16,6 +16,8 @@
     <h1>Batman Trivia: Results</h1>
 
     <?php
+    session_start();
+    $_POST = $_SESSION['POST'];
 
     static $answer_keys = ['D', 'B', 'B', 'C', 'B']; //the correct answer keys
     static $answer_values = [ /*correct answers to show user on results page*/
@@ -61,7 +63,7 @@
 
     <!-- button to retake the quiz -->
     <p style='margin-top: 50px'>
-      <input type=button onClick="parent.location='index.html'" value='Retake Quiz'>
+      <input type=button onClick="parent.location='index.php'" value='Retake Quiz'>
     </p>
 
   </div>
