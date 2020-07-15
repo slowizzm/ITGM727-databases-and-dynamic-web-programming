@@ -16,8 +16,8 @@
     <h1>Batman Trivia: Results</h1>
 
     <?php
-    session_start();
-    $_POST = $_SESSION['POST'];
+    // session_start();
+    // $_POST = $_SESSION['POST'];
 
     static $answer_keys = ['D', 'B', 'B', 'C', 'B']; //the correct answer keys
     static $answer_values = [ /*correct answers to show user on results page*/
