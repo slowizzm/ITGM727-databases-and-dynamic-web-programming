@@ -14,37 +14,16 @@
   <div id="container">
 
     <h1>Batman Trivia - Quiz</h1>
-
-
-    <?php
-    // define variables and set to empty values
-    $nameErr = "";
-    $username = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
-      } else {
-        session_start();
-        $_SESSION['POST'] = $_POST;
-        echo '<script>';
-        echo 'window.location = "results.php";';
-        echo '</script>';
-      }
-    }
-
-    ?>
-
     <p><span class="error">* required field.</span></p>
 
     <!-- </form> -->
-    <form method="post" action="<?php
-                                echo $_SERVER["PHP_SELF"]; ?>">
+    <form id="quiz" method="post" action="results.php">
+
       <table>
         <tr>
-          <td>Name:</td>
-          <td><input type="text" name="name">
-            <span class="error">* <?php echo $nameErr; ?></span>
-          </td>
+          <label for="name">Name: </label>
+          <input style="margin: 0 10px 20px 10px" type="text" id="name" name="name" onchange="setUserName(this)">
+          <span id="err" class="error">* </span>
         </tr>
       </table>
 
@@ -185,23 +164,25 @@
         </li>
 
       </ol>
-
-
       <!-- Submit Button -->
       <p style='margin: 40px 0 0 50px'>
-        <input type="submit" value="Submit" class="btn-submit" disabled="true" />
+        <input type="button" value="Submit" class="btn-submit" disabled="true" onClick="submitForm(this)" />
       </p>
     </form>
 
-    <!-- Enable button if all questions have answer-->
     <script>
       const q = [],
-        QUESTIONS = 5,
-        btn_submit = document.querySelector('input[type="submit"]');
+        btn_submit = document.querySelector('input[type="button"]'),
+        questionsAnswered = [false, false, false, false, false],
+        err = document.getElementById('err');
 
-      let questionsAnswered = [false, false, false, false, false],
-        username = document.querySelector('input[type="text"]');
+      let username = '';
 
+      function setUserName(name) {
+        username = name.value;
+      }
+
+      //Enable button if all questions have answer
       function checkIfSubmitButtonShouldBeEnabled(radio) {
         //check radio change in each question group
         if (radio.name === 'question-1-answers') questionsAnswered[0] = true;
@@ -219,6 +200,16 @@
         ) {
           btn_submit.disabled = false;
           // console.log('btn enabled');
+        }
+      }
+
+      //validate username
+      function submitForm(form) {
+        if (username === '') {
+          err.innerHTML = '* Name Required';
+          alert("Please fil in required fields");
+        } else {
+          form.type = "submit";
         }
       }
     </script>
