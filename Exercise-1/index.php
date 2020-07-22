@@ -192,15 +192,11 @@
         if (radio.name === 'question-5-answers') questionsAnswered[4] = true;
 
         //check if all questions have answer
-        if (questionsAnswered[0] &&
-          questionsAnswered[1] &&
-          questionsAnswered[2] &&
-          questionsAnswered[3] &&
-          questionsAnswered[4]
-        ) {
-          btn_submit.disabled = false;
-          // console.log('btn enabled');
-        }
+        let allTrue = questionsAnswered.every(qa => {
+          return qa === true;
+        });
+
+        if (allTrue) btn_submit.disabled = false;
       }
 
       //validate username
