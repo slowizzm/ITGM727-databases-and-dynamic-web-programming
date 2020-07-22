@@ -207,7 +207,7 @@
       function submitForm(form) {
         if (username === '') {
           err.innerHTML = '* Name Required';
-          alert("Please fil in required fields");
+          alert("Please fill in required fields");
         } else {
           form.type = "submit";
         }
