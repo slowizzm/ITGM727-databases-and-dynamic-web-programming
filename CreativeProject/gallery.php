@@ -1,4 +1,11 @@
 <?php
+$log = $_GET['isLoggedIn'];
+if ($log == true) {
+    $GLOBALS['nav_value'] = 'PROFILE';
+} else {
+    $GLOBALS['nav_value'] = 'LOGIN';
+}
+
 $server = 'localhost';
 $user = 'slow_izzm';
 $password = 'd33';
