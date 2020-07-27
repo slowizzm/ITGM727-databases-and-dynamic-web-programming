@@ -70,10 +70,10 @@ if (isset($_POST['submit'])) {
 } // end of validation
 
 //check errs and redirect user
-if (array_filter($errs)) {
-} else {
-    // header('Location: results.php');
-}
+// if (array_filter($errs)) {
+// } else {
+//     // header('Location: results.php');
+// }
 ?>
 
 <!DOCTYPE html>
@@ -81,24 +81,24 @@ if (array_filter($errs)) {
 <?php include 'temp/header.php'; ?>
 <section class="container grey-text">
     <h4 class="center">Add Student</h4>
-    <form action="" class="white" action="add.php" method="POST">
+    <form class="white" action="add.php" method="POST">
         <label>Your Email:</label>
         <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
         <div class="red-text"><?php echo $errs['email']; ?></div>
         <label>Username</label>
-        <input type="text" name="title" value="<?php echo htmlspecialchars($username) ?>">
+        <input type="text" name="username" value="<?php echo htmlspecialchars($username) ?>">
         <div class=" red-text"><?php echo $errs['username']; ?></div>
         <label>Semester</label>
-        <input type="text" name="attributes" value="<?php echo htmlspecialchars($semester) ?>">
+        <input type="text" name="semester" value="<?php echo htmlspecialchars($semester) ?>">
         <div class=" red-text"><?php echo $errs['semester']; ?></div>
         <label>Course ID</label>
-        <input type="text" name="attributes" value="<?php echo htmlspecialchars($course_id) ?>">
+        <input type="text" name="course_id" value="<?php echo htmlspecialchars($course_id) ?>">
         <div class=" red-text"><?php echo $errs['course_id']; ?></div>
         <label>Section</label>
-        <input type="text" name="attributes" value="<?php echo htmlspecialchars($section) ?>">
+        <input type="text" name="section" value="<?php echo htmlspecialchars($section) ?>">
         <div class=" red-text"><?php echo $errs['section']; ?></div>
         <label>P5.js Web Editor URL (Sketches)</label>
-        <input type="text" name="attributes" value="<?php echo htmlspecialchars($p5_url) ?>">
+        <input type="text" name="p5_url" value="<?php echo htmlspecialchars($p5_url) ?>">
         <div class=" red-text"><?php echo $errs['p5_url']; ?></div>
         <div class="center">
             <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
