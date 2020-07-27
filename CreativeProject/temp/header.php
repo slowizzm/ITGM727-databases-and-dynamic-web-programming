@@ -1,3 +1,14 @@
+<?php
+$log = $GLOBALS['nav_value'];
+$showSignUp = false;
+if ($log === 'LOGIN') {
+    $showSignUp = true;
+    $goto = 'login.php';
+} else {
+    //go
+}
+?>
+
 <head>
     <title>Interactive Media Arts Gallery</title>
     <!-- Compiled and minified CSS -->
@@ -11,7 +22,10 @@
         <div class="container">
             <a href="#" class="brand-logo brand-text">Student Gallery</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
-                <li><a href="#" class="btn brand z-depth-0">Add Student</a></li>
+                <?php if ($showSignUp == true) : ?>
+                    echo '<li><a href="signup.php" class="btn brand z-depth-0">SIGN UP</a></li>';
+                <?php endif ?>
+                <li><a href="<?php echo $goto ?>" class="btn brand z-depth-0"><?php echo $log ?></a></li>
             </ul>
         </div>
     </nav>
