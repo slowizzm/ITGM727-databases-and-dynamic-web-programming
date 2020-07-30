@@ -1,5 +1,5 @@
 # ITGM727 - Databases and Dynamic Website Programming
-** Exercise 2: Guestbook
+## Exercise 2: Guestbook
 
 
 ### Learning Outcome
