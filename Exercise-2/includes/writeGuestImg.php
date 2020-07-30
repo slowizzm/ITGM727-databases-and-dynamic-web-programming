@@ -4,9 +4,9 @@ function writeGuestImg($dir, $img)
 {
     // temp name
     $img_tmp = $img['tmp_name'];
-    
+
     //add timestamp
-    $img_name = getTimestamp() . $img['name'];
+    $img_name = getTimeStamp() . $img['name'];
 
     //strip whitespace from string
     $img_name = str_replace(' ', '', $img_name);
