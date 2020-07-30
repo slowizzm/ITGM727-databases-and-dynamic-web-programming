@@ -19,8 +19,9 @@ if (!empty($_POST)) {
   $email = $_POST['email'];
   $message = $_POST['message'];
 
-  // store date
-  $date = date("m/d/Y");
+  // store date and time
+  $date .= date('n/d/Y');
+  $time = date('g:i a');
 
 
   // check if guest uploaded img
@@ -39,7 +40,7 @@ if (!empty($_POST)) {
   // strip spaces
   $guestImg = str_replace(' ', '', $guestImg);
   // write data
-  writeGuestData($folder_guestEntries, $name, $email, $date, $message, $guestImg);
+  writeGuestData($folder_guestEntries, $name, $email, $date, $time, $message, $guestImg);
 }
 
 //get entries data
@@ -88,10 +89,10 @@ $entries = readGuestData('guestEntries');
     <?php foreach ($entries as $entry) : ?>
 
       <?php
-      if (isset($entry[4])) {
+      if (isset($entry[5])) {
 
         // store img
-        $guestImg = $entry[4];
+        $guestImg = $entry[5];
         //set empty initials
         $initials = '';
       } else {
@@ -127,10 +128,13 @@ $entries = readGuestData('guestEntries');
                     <div class='name'>
                       <a><?php echo $entry[0] ?></a>
                     </div>
-                    <div class='date'><?php echo $entry[2] ?></div>
+                    <div class="date-time">
+                      <div class='date'><?php echo $entry[2] ?></div>
+                      <div class='time'><?php echo $entry[3] ?></div>
+                    </div>
                   </div><!-- END NAME/DATE-->
                   <div class='message'>
-                    <?php echo $entry[3] ?>
+                    <?php echo $entry[4] ?>
                   </div>
                 </div><!-- END CONTAINER-MESSAGE -->
               </div><!-- END DATA-ROW -->
