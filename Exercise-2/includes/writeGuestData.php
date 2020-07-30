@@ -1,6 +1,6 @@
 <?php
 
-function writeGuestData($dir, $name, $email, $date, $message, $img)
+function writeGuestData($dir, $name, $email, $date, $time, $message, $img)
 {
 
     // store guest info
@@ -23,6 +23,11 @@ function writeGuestData($dir, $name, $email, $date, $message, $img)
             $guest_info .= stripslashes($date) . "\n";
         }
 
+        // write time to file - return line
+        if (!empty($time)) {
+            $guest_info .= stripslashes($time) . "\n";
+        }
+
         // write message to file - return line
         if (!empty($message)) {
             $guest_info .= stripslashes($message) . "\n";
@@ -34,7 +39,7 @@ function writeGuestData($dir, $name, $email, $date, $message, $img)
         }
 
         //set timestamp for unique entry
-        $timeStamp = getTimeStamp();
+        $timeStamp = getTimestamp();
 
         // save new entry
         $file_name = "$dir/date-signed-$timeStamp.txt";
