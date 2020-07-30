@@ -1,6 +1,6 @@
 <?php
 
-function getTimestamp() {
+function getTimeStamp() {
 
   $currentTime = time();
   $time = explode(" ", $currentTime);
