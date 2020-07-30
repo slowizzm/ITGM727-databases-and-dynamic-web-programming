@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/signbook.css">
     <link rel="stylesheet" href="css/header.css">
-    <title>Document</title>
+    <title>ITGM727 - Exercise 2: Guestbook</title>
 </head>
 
 <body>
