@@ -55,7 +55,6 @@ $i = 1;
                 $course = htmlspecialchars($student['course_id']);
                 $section = htmlspecialchars($student['section']);
                 $img = $student['img'];
-                // $img = 'images/img' . $i++ . ".png";
                 $url = htmlspecialchars($student['p5_url']);
                 ?>
 
