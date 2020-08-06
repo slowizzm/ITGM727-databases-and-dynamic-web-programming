@@ -1,25 +1,14 @@
 <?php
 $log = $_GET['isLoggedIn'];
 if ($log == true) {
-    $GLOBALS['nav_value'] = 'PROFILE';
+    $GLOBALS['nav_value'] = 'profile';
 } else {
-    $GLOBALS['nav_value'] = 'LOGIN';
+    $GLOBALS['nav_value'] = 'login';
 }
-
-$server = 'localhost';
-$user = 'slow_izzm';
-$password = 'd33';
-$db = 'student_gallery';
-//connect to database
-$conn = mysqli_connect($server, $user, $password, $db);
-
-//check connection
-if (!$conn) {
-    echo 'connection err: ' . mysqli_connect_error();
-}
-
+//connect to db
+include 'includes/conn.php';
 //query users
-$query = 'SELECT id, email, username, semester, course_id, section, img, p5_url FROM student_info ORDER BY created_at';
+$query = 'SELECT id, email, username, semester, major, course_id, section, img, p5_url FROM student_info ORDER BY created_at';
 
 //get result
 $result = mysqli_query($conn, $query);
@@ -30,44 +19,77 @@ $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //free mem / close conn
 mysqli_free_result($result);
 mysqli_close($conn);
+
+$i = 1;
 ?>
 
+<!-- HTML -->
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'temp/header.php'; ?>
 
-<div class="container">
-    <div class="row">
-        <?php foreach ($students as $student) : ?>
-            <?php
-            $username = htmlspecialchars($student['username']);
-            $email = htmlspecialchars($student['email']);
-            $semester = htmlspecialchars($student['semester']);
-            $course = htmlspecialchars($student['course_id']);
-            $section = htmlspecialchars($student['section']);
-            $img = 'images/' . $student['img'];
-            $url = htmlspecialchars($student['p5_url']);
-            ?>
-            <div class="col s6 md3">
-                <div class="card z-depth-0">
-                    <div class="card-content center">
-                        <img src="<?php echo $img ?>" alt="<?php echo htmlspecialchars($student['username']) ?>" style="width:100%">
-                        <h1 class="username"><?php echo $username ?></h1>
-                        <ul class="info">
-                            <li><?php echo 'email: ' . $email ?></li>
-                            <li><?php echo 'semester: ' .  $semester ?></li>
-                            <li><?php echo 'course: ' .  $course ?></li>
-                            <li><?php echo 'section: ' .  $section ?></li>
+<head>
+    <title>Interactive Media Design Arts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/g.css">
 
-                        </ul>
-                        <!-- <p class="course_id"><?php echo htmlspecialchars($student['course_id']) ?></p> -->
+
+
+</head>
+
+<body>
+    <?php include 'includes/header.php'; ?>
+
+    <!-- CONTAINER -->
+    <div class="container">
+        <h1 class="label"> Students </h1>
+        <div class="cards-container">
+
+            <?php foreach ($students as $student) : ?>
+                <?php
+                $user_name = htmlspecialchars($student['username']);
+                $user_email = htmlspecialchars($student['email']);
+                $major = htmlspecialchars($student['major']);
+                $semester = htmlspecialchars($student['semester']);
+                $course = htmlspecialchars($student['course_id']);
+                $section = htmlspecialchars($student['section']);
+                $img = $student['img'];
+                // $img = 'images/img' . $i++ . ".png";
+                $url = htmlspecialchars($student['p5_url']);
+                ?>
+
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-cover"></div>
+                        <img class="card-avatar" src="<?php echo $img ?>" alt="<?php echo htmlspecialchars($student['username']) ?>" />
+                        <h1 class="card-fullname"><?php echo $user_name ?></h1>
+                        <h2 class="card-jobtitle"><?php echo $major ?></h2>
                     </div>
-                    <p><button onclick="window.open('<?php echo $url ?>', '_blank')">P5.js Sketches</button></p>
+                    <div class="card-main">
+                        <div class="card-section">
+                            <div class="card-content">
+                                <div class="card-subtitle">ABOUT</div>
+                                <ul class="card-info">
+                                    <li><?php echo $user_email ?></li>
+                                    <li><?php echo $semester ?></li>
+                                    <li><?php echo $course ?></li>
+                                    <li><?php echo 'section ' .  $section ?></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="card-action" onclick="window.open('<?php echo $url ?>', '_blank')">
+                            <span class="card-url"> P5.js Sketches </span>
+                            <i class="card-url fa fa-angle-right"> </i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach ?>
+
+            <?php endforeach ?>
+        </div>
     </div>
-</div>
 
 </body>
 
