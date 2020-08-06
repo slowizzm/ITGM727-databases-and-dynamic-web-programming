@@ -1,10 +1,5 @@
 <?php
-$log = $_GET['isLoggedIn'];
-if ($log == true) {
-    $GLOBALS['nav_value'] = 'profile';
-} else {
-    $GLOBALS['nav_value'] = 'login';
-}
+session_start();
 //connect to db
 include 'includes/conn.php';
 //query users
@@ -32,7 +27,7 @@ $i = 1;
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/g.css">
+    <link rel="stylesheet" type="text/css" href="css/gallery.css">
 
 
 

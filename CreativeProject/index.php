@@ -6,8 +6,12 @@ $password = $_POST['password'];
 $query = "SELECT *FROM student_info WHERE username='$username' AND password='$password'";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
-$isLoggedIn = false;
+
+//sessions vars
 $_SESSION['id'] = $row[0];
+$_SESSION['user'] = $row[2];
+$_SESSION['img'] = $row[10];
+$_SESSION['isLoggedIn'] = false;
 
 //error list
 $errs = array('username' => '', 'password' => '');
@@ -16,7 +20,8 @@ if ($row > 1) {
     if ($row[4] == 0) {
         header('location: admin.php');
     } else if ($row[4] == 1) {
-        header('location: gallery.php?isLoggedIn=true;');
+        $_SESSION['isLoggedIn'] = true;
+        header('location: gallery.php');
     } else {
         echo 'err: you are not an admin or user';
     }
@@ -54,7 +59,7 @@ if ($row > 1) {
         </form> <!-- END OF FORM -->
     </div>
 
-    
+
 
 </body>
 
