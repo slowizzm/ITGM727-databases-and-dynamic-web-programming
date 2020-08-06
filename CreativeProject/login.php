@@ -1,11 +1,9 @@
 <?php
 
-include 'conn.php';
-$username=$_POST['username'];
-$password=$_POST['password'];
-$query = "SELECT *FROM users WHERE username='$username' AND password='$password'";
-$result = mysqli_query($conn, $query);
-$row=mysqli_fetch_array($result);
+include 'includes/conn.php';
+include 'includes/query_users.php';
+
+print_r($row);
 
 if($row>1){
     if($row[3] == 0) {
@@ -19,6 +17,5 @@ if($row>1){
 } else {
     // echo "<script> alert('username and password do not match');</script>";
     header('location: index.php');
-
 }
 ?>
