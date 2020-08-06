@@ -1,21 +1,26 @@
 <?php
-$showSignUp = false;
-if ($nav_value === 'login') {
-    $showSignUp = true;
-}
-$goto = $nav_value . '.php';
+
+$isLoggedIn = $_SESSION['isLoggedIn'];
+$nav_img = $_SESSION['img'];
+$user_name = $_SESSION['user'];
+$isLoggedIn = $_SESSION['isLoggedIn'];
 ?>
 
 <!-- TODO - Setup logout -->
 
 <nav class="nav-wrapper">
     <div class="nav-container">
-        <a href="#" class="brand-text">IMDA</a>
-        <ul class="btn-wrapper">
-            <?php if ($showSignUp == true) : ?>
-                <?php echo '<li><a href="signup.php" class="btn brand">SIGN UP</a></li>'; ?>
-            <?php endif ?>
-            <li><a href="<?php echo $goto ?>" class="btn brand" style="text-transform: uppercase" ><?php echo $nav_value ?></a></li>
-        </ul>
+        <a href="gallery.php" class="btn brand" style="text-transform: uppercase">Interactive Media Design Arts</a>
+        <div class="user-nav">
+            <div class="btn-wrapper">
+                <?php if ($isLoggedIn == true) {
+                    echo  '<img src="' . $nav_img . '" class="usrimg">';
+                    echo '<a href="profile.php" class="btn" style="text-transform: uppercase">' . $user_name . '</a>';
+                } else {
+                    echo '<a href="login.php" class="btn" style="text-transform: uppercase">Login</a>';
+                    echo '<a href="signup.php" class="btn">SIGN UP</a>';
+                } ?>
+            </div>
+        </div>
     </div>
 </nav>
