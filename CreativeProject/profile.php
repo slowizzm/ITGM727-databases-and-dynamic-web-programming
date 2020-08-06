@@ -124,7 +124,7 @@ if (isset($_POST['submit_userImg'])) {
 
 <head>
     <title>Interactive Media Arts Gallery</title>
-    <link rel="stylesheet" type="text/css" href="css/user.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
 </head>
 
