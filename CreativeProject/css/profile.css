@@ -1,0 +1,232 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+.container {
+    max-width: 1140px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+.card-container {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.user-row {
+    display: flex;
+    flex-wrap: nowrap !important;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.user-img-container {
+    margin-bottom: 1rem;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.img-container {
+    margin: 0 auto;
+}
+
+.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .25rem;
+}
+
+.user-info-wrap {
+    margin-bottom: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+}
+
+.user-info {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.username {
+    white-space: nowrap;
+    padding-top: .5rem;
+    padding-bottom: .25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    text-align: left !important;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.pw {
+    background-image: url();
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: auto;
+}
+
+.message{
+    color: red;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    overflow: visible;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.user-input-container {
+    margin: 0 -15px;
+}
+
+.user-pw-container {
+    margin: 0 -15px;
+}
+
+.user-input-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.user-input-col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.password {
+    margin-bottom: 1rem;
+}
+
+.save-wrap {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.btn-save {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin: 0;
+    font-family: inherit;
+}
+
+.navlist {
+    word-wrap: break-word;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 0;
+}
+
+.nav-item {
+    list-style: none;
+    word-wrap: break-word;
+}
