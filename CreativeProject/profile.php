@@ -1,6 +1,5 @@
 <?php
 session_start();
-$GLOBALS['nav_value'] = 'Gallery';
 
 
 //includes
@@ -72,6 +71,7 @@ if (isset($_POST['submit_data'])) {
     } else {
         echo 'query err: ' . mysqli_error($conn);
     }
+    $_SESSION['user'] = $username;
 }
 
 if (isset($_POST['submit_userImg'])) {
@@ -79,6 +79,16 @@ if (isset($_POST['submit_userImg'])) {
     // store date and time
     $date .= date('n/d/Y');
     $time = date('g:i a');
+
+
+    // $path = "images";
+    // $filename =  $path . "/" . $_POST['delete_file']; // build the full path here
+    if (file_exists($img)) {
+        unlink($img);
+        echo 'File ' . $img . ' has been deleted';
+    } else {
+        echo 'Could not delete ' . $img . ', file does not exist';
+    }
 
 
     // check if guest uploaded img
@@ -100,8 +110,6 @@ if (isset($_POST['submit_userImg'])) {
     // strip spaces
     $img = str_replace(' ', '', $img);
 
-
-    echo $img;
     //update sql
     $sql = "UPDATE student_info 
     SET img='$img'
@@ -114,6 +122,9 @@ if (isset($_POST['submit_userImg'])) {
     } else {
         echo 'query err: ' . mysqli_error($conn);
     }
+
+
+    $_SESSION['img'] = $img;
 }
 
 
