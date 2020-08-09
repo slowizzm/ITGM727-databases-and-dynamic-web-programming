@@ -3,7 +3,7 @@ session_start();
 //connect to db
 include 'includes/conn.php';
 //query users
-$query = 'SELECT id, email, username, semester, major, course_id, section, img, p5_url FROM student_info ORDER BY created_at';
+$query = 'SELECT id, email, username, major, artistic_influence, bio, img, p5_url FROM student_info ORDER BY created_at';
 
 //get result
 $result = mysqli_query($conn, $query);
@@ -38,7 +38,7 @@ $i = 1;
 
     <!-- CONTAINER -->
     <div class="container">
-        <h1 class="label"> Students </h1>
+        <h1 class="label"> MED290 FA20 Gallery</h1>
         <div class="cards-container">
 
             <?php foreach ($students as $student) : ?>
@@ -46,9 +46,8 @@ $i = 1;
                 $user_name = htmlspecialchars($student['username']);
                 $user_email = htmlspecialchars($student['email']);
                 $major = htmlspecialchars($student['major']);
-                $semester = htmlspecialchars($student['semester']);
-                $course = htmlspecialchars($student['course_id']);
-                $section = htmlspecialchars($student['section']);
+                $artistic_influence = htmlspecialchars($student['artistic_influence']);
+                $bio = htmlspecialchars($student['bio']);
                 $img = $student['img'];
                 $url = htmlspecialchars($student['p5_url']);
                 ?>
@@ -62,16 +61,13 @@ $i = 1;
                         <h1 class="card-fullname"><?php echo $user_name ?></h1>
                         <h2 class="card-jobtitle"><?php echo $major ?></h2>
                     </div>
-                    <div class="card-main">
+                    <div class="card-info">
                         <div class="card-section">
+                            <div class="card-influence">Artistic Influence: <span> <?php echo $artistic_influence ?></span></div>
                             <div class="card-content">
                                 <div class="card-subtitle">ABOUT</div>
-                                <ul class="card-info">
-                                    <li><?php echo $user_email ?></li>
-                                    <li><?php echo $semester ?></li>
-                                    <li><?php echo $course ?></li>
-                                    <li><?php echo 'section ' .  $section ?></li>
-                                </ul>
+                                <p class="card-desc"><?php echo $bio ?>
+                                </p>
                             </div>
                         </div>
                         <button class="card-action" onclick="window.open('<?php echo $url ?>', '_blank')">
