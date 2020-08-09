@@ -10,23 +10,23 @@ $errs = array('email' => '', 'username' => '', 'password' => '');
 //validation
 if (isset($_POST['submit'])) {
 
-    
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-        //create sql
-        $sql = "INSERT INTO student_info(email,username,password) VALUES('$email', '$username', '$password')";
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-        //save to db
-        if (mysqli_query($conn, $sql)) {
-            echo $email;
-            // header('location: user.php');
+    //create sql
+    $sql = "INSERT INTO student_info(email,username,password) VALUES('$email', '$username', '$password')";
 
-        } else {
-            echo 'query err: ' . mysqli_error($conn);
-        }
+    //save to db
+    if (mysqli_query($conn, $sql)) {
+        echo $email;
+        // header('location: user.php');
+
+    } else {
+        echo 'query err: ' . mysqli_error($conn);
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,24 +34,22 @@ if (isset($_POST['submit'])) {
 
 <head>
     <title>Interactive Media Arts Gallery</title>
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 
 <body>
     <div class="container">
         <!-- FORM -->
-        <form class="form" action="signup.php" method="POST">
+        <form class="form signup" action="signup.php" method="POST">
 
             <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>" placeholder="Email" required>
 
             <input type="text" name="username" value="<?php echo htmlspecialchars($username) ?>" placeholder="Name" required>
 
-            <input type="password" name="password" value="" required>
+            <input type="password" name="password" value="" placeholder="Password" required>
 
-            <input type="submit" name="submit" value="Sign Up" class="btn">
-            <div class="login">
-                <p>Already have an account?</p> <a href="index.php">Login</a>
-            </div>
+            <input type="submit" name="submit" value="SIGN UP" class="btn">
+            <p class="nav_options">Already have an account? <a href="index.php" class="signup-btn">Login</a></p>
         </form> <!-- END OF FORM -->
     </div>
 </body>

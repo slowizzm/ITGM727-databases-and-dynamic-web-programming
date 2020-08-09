@@ -14,14 +14,14 @@ body {
 h1 {
     color: #fff;
     text-align: center;
-    font-family: Arial;
+    font-family: 'Lato', sans-serif;
     font-weight: normal;
     margin: 2em auto 0px;
 }
 
 .container {
     width: 800px;
-    height: 470px;
+    height: 340px;
     background: #1680EB;
     margin: 0px auto;
     padding-top: 180px;
@@ -29,7 +29,7 @@ h1 {
 
 .form {
     width: 400px;
-    height: 100%;
+    height: 230px;
     background: #edeff1;
     margin: 0px auto;
     padding-top: 20px;
@@ -66,7 +66,7 @@ input[type="submit"] {
     cursor: pointer;
     color: #fff;
     border: 0px;
-    margin: 30px auto 0 auto;
+    margin: auto;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -78,28 +78,21 @@ input[type="submit"]:hover {
     background: #0590f4;
 }
 
-.login {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 15px;
+.nav_options {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #343434;
+    display: block;
+    margin: 15px auto;
+    text-decoration: none;
+    transition: all 0.3s ease;
     font-size: 12px;
 }
 
-a {
-    /* text-align: center; */
-    font-family: 'Lato', sans-serif;
-    color: #1680EB;
-    /* display: block; */
-    /* margin: 15px auto; */
-    padding-left: 10px;
+.signup-btn {
+    color: green;
+    cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    color: #0590f4;
 }
 
 ::-webkit-input-placeholder {
