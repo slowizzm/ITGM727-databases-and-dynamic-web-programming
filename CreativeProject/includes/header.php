@@ -15,7 +15,16 @@ $isLoggedIn = $_SESSION['isLoggedIn'];
             <div class="btn-wrapper">
                 <?php if ($isLoggedIn == true) {
                     echo  '<img src="' . $nav_img . '" class="usrimg">';
-                    echo '<a href="profile.php" class="btn" style="text-transform: uppercase">' . $user_name . '</a>';
+                    echo '<div class="dropdown">
+    <button class="dropbtn">' . $user_name . ' 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="profile.php">Edit Profile</a>
+      <a href="index.php">Log Out</a>
+    </div>
+  </div> ';
+                    // echo '<a href="profile.php" class="btn" style="text-transform: uppercase">' . $user_name . '</a>';
                 } else {
                     echo '<a href="login.php" class="btn" style="text-transform: uppercase">Login</a>';
                     echo '<a href="signup.php" class="btn">SIGN UP</a>';
