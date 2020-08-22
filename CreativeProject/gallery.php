@@ -14,8 +14,6 @@ $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //free mem / close conn
 mysqli_free_result($result);
 mysqli_close($conn);
-
-$i = 1;
 ?>
 
 <!-- HTML -->
@@ -28,9 +26,6 @@ $i = 1;
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/gallery.css">
-
-
-
 </head>
 
 <body>
