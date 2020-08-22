@@ -17,21 +17,19 @@ $_SESSION['isLoggedIn'] = false;
 $errs = array('username' => '', 'password' => '');
 
 if ($row > 1) {
+    print_r($row);
     if ($row[1] == 0) {
+        $_SESSION['isLoggedIn'] = true;
         header('location: admin.php');
     } else if ($row[1] == 1) {
         $_SESSION['isLoggedIn'] = true;
         header('location: gallery.php');
-    } else {
-        echo 'err: you are not an admin or user';
     }
 } else {
     //check errs and redirect user
     if (array_filter($errs)) {
         echo 'err';
     } else {
-        // header('Location: results.php');
-        // echo "<script> alert('username and password do not match');</script>";
     }
 }
 ?>
@@ -56,10 +54,8 @@ if ($row > 1) {
 
             <input type="submit" name="submit" value="LOGIN" class="btn">
             <p class="nav_options">Don't have an account? <a href="signup.php" class="signup-btn">Signup</a></p>
-        </form> <!-- END OF FORM -->
-    </div>
-
-
+        </form><!-- END OF FORM -->
+    </div><!-- END OF CONTAINER -->
 
 </body>
 
