@@ -4,7 +4,6 @@ function writeUserImg($dir, $img)
 {
     // temp name
     $img_tmp = $img['tmp_name'];
-echo 'hhhhheeeeee';
     //add timestamp
     $img_name = getTimestamp() . $img['name'];
 
