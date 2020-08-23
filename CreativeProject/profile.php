@@ -8,39 +8,38 @@ include 'includes/writeUserImg.php';
 include 'includes/timestamp.php';
 
 // folder
-$folder_userImgs = 'userImgs';
+$folder_studentImgs = 'studentImgs';
 
 
 $user = $_SESSION['id'];
-$query = "SELECT *FROM student_info WHERE id='$user'";
+$query = "SELECT *FROM students WHERE id='$user'"; 
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
-
 // print_r($row);
 
 //init user data
 $user_id = $row[0];
-$email = $row[2];
-$username = $row[3];
-$password = $row[4];
-$major = $row[5];
-$artistic_influence = $row[6];
-$bio = $row[7];
-$img = $row[8];
-$url = $row[9];
-$semester = $row[10];
-$course_id = $row[11];
-$section = $row[12];
+$email = $row[1];
+$username = $row[2];
+$password = $row[3];
+$major = $row[4];
+$artistic_influence = $row[5];
+$bio = $row[6];
+$img = $row[7];
+$url = $row[8];
+$semester = $row[9];
+$course_id = $row[10];
+$section = $row[11];
 
 
 
 if (isset($_POST['submit_pw'])) {
     if (count($_POST) > 0) {
-        $result = mysqli_query($conn, "SELECT *from student_info WHERE id='" . $_SESSION["id"] . "'");
+        $result = mysqli_query($conn, "SELECT *from students WHERE id='" . $_SESSION["id"] . "'");
         $row = mysqli_fetch_array($result);
 
         if ($_POST["currentPassword"] == $row["password"]) {
-            mysqli_query($conn, "UPDATE student_info set password='" . $_POST["newPassword"] . "' WHERE id='" . $_SESSION["id"] . "'");
+            mysqli_query($conn, "UPDATE students set password='" . $_POST["newPassword"] . "' WHERE id='" . $_SESSION["id"] . "'");
             $message = "Password Changed";
         } else
             $message = "Current Password is not correct";
@@ -59,7 +58,7 @@ if (isset($_POST['submit_data'])) {
     $url = mysqli_real_escape_string($conn, $_POST['p5_url']);
 
     //update sql
-    $sql = "UPDATE student_info 
+    $sql = "UPDATE students 
     SET username='$username'
     ,email='$email'
     ,major='$major'
@@ -75,7 +74,7 @@ if (isset($_POST['submit_data'])) {
     $_SESSION['user'] = $username;
 }
 
-if (isset($_FILES['upload_userImg'])) {
+if (isset($_FILES['upload_studentImg'])) {
 
     // store date and time
     $date .= date('n/d/Y');
@@ -93,13 +92,13 @@ if (isset($_FILES['upload_userImg'])) {
 
 
     // check if guest uploaded img
-    if ($_FILES['upload_userImg'] && $_FILES['upload_userImg']['size'] > 0) {
+    if ($_FILES['upload_studentImg'] && $_FILES['upload_studentImg']['size'] > 0) {
         // store img
-        $imgUpload = $_FILES['upload_userImg'];
-        // print_r($imgUpload);
+        $imgUpload = $_FILES['upload_studentImg'];
+        print_r($imgUpload);
 
         // save img
-        $img = writeUserImg($folder_userImgs, $imgUpload);
+        $img = writeUserImg($folder_studentImgs, $imgUpload);
 
         // echo $img;
     } else {
@@ -112,7 +111,7 @@ if (isset($_FILES['upload_userImg'])) {
     $img = str_replace(' ', '', $img);
 
     //update sql
-    $sql = "UPDATE student_info 
+    $sql = "UPDATE students 
     SET img='$img'
      WHERE id='$user_id'";
     //save to db
@@ -160,8 +159,8 @@ if (isset($_FILES['upload_userImg'])) {
                                         <form action="profile.php" method="post" enctype="multipart/form-data">
                                             <div class="img-change-wrap">
                                                 <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-                                                <input type="file" accept=".png, .jpg, .jpeg" class="input-file" name="upload_userImg" onchange="this.form.submit()" />
-                                                <button class="btn-file-upload" type="" name="submit_userImg">Change Photo</button>
+                                                <input type="file" accept=".png, .jpg, .jpeg" class="input-file" name="upload_studentImg" onchange="this.form.submit()" />
+                                                <button class="btn-file-upload" type="" name="submit_studentImg">Change Photo</button>
                                             </div>
                                         </form>
                                     </div>

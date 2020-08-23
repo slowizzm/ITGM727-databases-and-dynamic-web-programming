@@ -3,7 +3,7 @@ session_start();
 //connect to db
 include 'includes/conn.php';
 //query users
-$query = 'SELECT id, email, username, major, artistic_influence, bio, img, p5_url FROM student_info ORDER BY created_at';
+$query = 'SELECT id, email, username, major, artistic_influence, bio, img, p5_url FROM students ORDER BY created_at';
 
 //get result
 $result = mysqli_query($conn, $query);
