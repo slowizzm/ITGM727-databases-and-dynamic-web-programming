@@ -3,28 +3,35 @@ session_start();
 include 'includes/conn.php';
 $username  = $_POST['username'];
 $password = $_POST['password'];
-$query = "SELECT *FROM student_info WHERE username='$username' AND password='$password'";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_array($result, MYSQLI_NUM);
+$admin_query = "SELECT *FROM admins WHERE username='$username' AND password='$password'";
+$student_query = "SELECT *FROM students WHERE username='$username' AND password='$password'";
+$admin_result = mysqli_query($conn, $admin_query);
+$admin_row = mysqli_fetch_array($admin_result, MYSQLI_NUM);
+
+$student_result = mysqli_query($conn, $student_query);
+$student_row = mysqli_fetch_array($student_result, MYSQLI_NUM);
 
 //sessions vars
-$_SESSION['id'] = $row[0];
-$_SESSION['user'] = $row[3];
-$_SESSION['img'] = $row[8];
-$_SESSION['isLoggedIn'] = false;
+$_SESSION['isAdminLoggedIn'] = false;
+$_SESSION['isStudentLoggedIn'] = false;
 
 //error list
 $errs = array('username' => '', 'password' => '');
 
-if ($row > 1) {
-    print_r($row);
-    if ($row[1] == 0) {
-        $_SESSION['isLoggedIn'] = true;
-        header('location: admin.php');
-    } else if ($row[1] == 1) {
-        $_SESSION['isLoggedIn'] = true;
-        header('location: gallery.php');
-    }
+if ($admin_row > 1) {
+    $_SESSION['id'] = $admin_row[0];
+    $_SESSION['user'] = $admin_row[2];
+    $_SESSION['img'] = $admin_row[4];
+
+    $_SESSION['isAdminLoggedIn'] = true;
+    header('location: admin.php');
+} else if ($student_row > 1) {
+    $_SESSION['id'] = $student_row[0];
+    $_SESSION['user'] = $student_row[2];
+    $_SESSION['img'] = $student_row[7];
+
+    $_SESSION['isStudentLoggedIn'] = true;
+    header('location: gallery.php');
 } else {
     //check errs and redirect user
     if (array_filter($errs)) {
