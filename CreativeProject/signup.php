@@ -6,7 +6,7 @@ include 'includes/conn.php';
 //init empty variables
 
 //error list
-$errs = array('email' => '', 'username' => '', 'password' => '');
+$errs = array('email' => '', 'username' => '', 'password' => '', 'semester' => '', 'course_id' => '', 'section' => '');
 
 //validation
 if (isset($_POST['submit'])) {
@@ -15,9 +15,12 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $semester = 'FA20';
+    $course_id = 'MED290';
+    $section = '001';
 
     //create sql
-    $sql = "INSERT INTO students(email,username,password) VALUES('$email', '$username', '$password')";
+    $sql = "INSERT INTO students(email,username,password,semester,course_id,section) VALUES('$email', '$username', '$password', '$semester', '$course_id', '$section')";
 
     //save to db
     if (mysqli_query($conn, $sql)) {
