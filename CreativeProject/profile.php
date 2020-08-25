@@ -10,12 +10,12 @@ include 'includes/timestamp.php';
 // folder
 $folder_studentImgs = 'studentImgs';
 
-
+//set user to session user
 $user = $_SESSION['id'];
-$query = "SELECT *FROM students WHERE id='$user'"; 
+//query user data
+$query = "SELECT *FROM students WHERE id='$user'";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
-// print_r($row);
 
 //init user data
 $user_id = $row[0];
@@ -32,7 +32,7 @@ $course_id = $row[10];
 $section = $row[11];
 
 
-
+//check if pw is reset - update data
 if (isset($_POST['submit_pw'])) {
     if (count($_POST) > 0) {
         $result = mysqli_query($conn, "SELECT *from students WHERE id='" . $_SESSION["id"] . "'");
@@ -46,9 +46,7 @@ if (isset($_POST['submit_pw'])) {
     }
 }
 
-
-
-//validation
+//check if data has changed - update data
 if (isset($_POST['submit_data'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -74,15 +72,14 @@ if (isset($_POST['submit_data'])) {
     $_SESSION['user'] = $username;
 }
 
+//check if user image has changed - update data
 if (isset($_FILES['upload_studentImg'])) {
 
     // store date and time
     $date .= date('n/d/Y');
     $time = date('g:i a');
 
-
-    // $path = "images";
-    // $filename =  $path . "/" . $_POST['delete_file']; // build the full path here
+    //check if user laready has an image - delete it
     if (file_exists($img)) {
         unlink($img);
         echo 'File ' . $img . ' has been deleted';
@@ -123,11 +120,12 @@ if (isset($_FILES['upload_studentImg'])) {
         echo 'query err: ' . mysqli_error($conn);
     }
 
-
+    //set user session image - to pass around
     $_SESSION['img'] = $img;
 }
-
-
+//free mem / close conn
+mysqli_free_result($result);
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -191,7 +189,7 @@ if (isset($_FILES['upload_studentImg'])) {
                                         <div class="col">
                                             <div class="form-group"> <label>Name</label> <input class="form-control" type="text" name="username" value="<?php echo $username ?>" required style="background-image: none !important;"></div>
                                             <div class="form-group"> <label>Major</label> <input class="form-control" type="text" name="major" placeholder="Major" value="<?php echo $major ?>" required></div>
-                                            <div class="form-group"> <label>Artistic Influence</label> <input class="form-control" type="text" name="artistic_influence" placeholder="What artist has influenced" value="<?php echo $artistic_influence ?>" required></div>
+                                            <div class="form-group"> <label>Favorite Artist</label> <input class="form-control" type="text" name="artistic_influence" placeholder="Who is your favorite artist?" value="<?php echo $artistic_influence ?>" required></div>
                                             <div class="form-group"> <label>Bio</label><textarea id="text-area" class="form-control" rows="4" cols="50" maxlength="125" name="bio" placeholder="Short bio" required><?php echo $bio ?></textarea></div>
                                             <div><span id="chars">100</span> characters remaining</div>
                                         </div>
@@ -232,8 +230,9 @@ if (isset($_FILES['upload_studentImg'])) {
         </div><!-- END OF CARD-CONTAINER -->
     </div><!-- END OF CONTAINER -->
 
-
+    <!-- js helpers -->
     <script>
+        //validate passwords
         function validatePassword() {
             let currentPassword, newPassword, confirmPassword, output = true;
 
@@ -241,6 +240,7 @@ if (isset($_FILES['upload_studentImg'])) {
             newPassword = document.frmChange.newPassword;
             confirmPassword = document.frmChange.confirmPassword;
 
+            //check if new password and confirm passord match - 
             if (newPassword.value != confirmPassword.value) {
                 newPassword.value = "";
                 confirmPassword.value = "";
@@ -248,12 +248,13 @@ if (isset($_FILES['upload_studentImg'])) {
                 document.getElementById("message").innerHTML = "not same";
                 output = false;
             }
-
+            // return new password to be submitted to database
             return output;
         }
 
-        let maxLength = 125;
-        var el;
+        //set a max length for student bio
+        let maxLength = 125; //max length for bio character
+        let el; //text area
 
         function countCharacters(e) {
             var textEntered, countRemaining, counter;
