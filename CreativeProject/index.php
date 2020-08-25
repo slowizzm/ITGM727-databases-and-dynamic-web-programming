@@ -19,7 +19,6 @@ $student_row = mysqli_fetch_array($student_result, MYSQLI_NUM);
 //sessions vars
 $_SESSION['isAdminLoggedIn'] = false;
 $_SESSION['isStudentLoggedIn'] = false;
-$_SESSION['has_init'] = false;
 
 //error list
 $errs = array('username' => '', 'password' => '');

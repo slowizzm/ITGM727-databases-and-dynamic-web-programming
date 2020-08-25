@@ -3,7 +3,7 @@ session_start();
 //connect to db
 include 'includes/conn.php';
 //query users
-$query = 'SELECT id, email, username, major, artistic_influence, bio, img, p5_url, semester, course_id, section, isActive FROM students ORDER BY id';
+$query = 'SELECT id, email, username, major, artistic_influence, img, p5_url, semester, course_id, section, isActive FROM students ORDER BY id';
 
 //get result
 $result = mysqli_query($conn, $query);
@@ -12,16 +12,6 @@ $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
 
 
-//iterate through each student
-foreach ($students as $key => $stud) {
-    //initialize styles if session init is false
-    if ($_SESSION['has_init'] == false) {
-        $opacityActiveStatus[$key] = 'opaque';
-        $cardColorActiveStatus[$key] = 'card-active';
-        $btnDeactivateStatus[$key] = 'show';
-        $btnReactivateStatus[$key] = 'hidden';
-    }
-}
 //check if deactivate button clicked - update isActive for student
 if (isset($_POST['deactivate'])) {
     $deactivate = $_POST['deactivate'];
@@ -65,11 +55,6 @@ if (isset($_POST['reset'])) {
 
     header('location: admin.php');
 }
-
-
-
-//set to true so initial styles do not reset on page reload
-$_SESSION['has_init'] = true;
 
 //free mem / close conn
 mysqli_free_result($result);
@@ -123,21 +108,21 @@ mysqli_close($conn);
 
                     //check is student is active - set styles
                     if ($isActive == 0) {
-                        $opacityActiveStatus[$key] = 'no-opaque';
-                        $cardColorActiveStatus[$key] = 'card-inactive';
-                        $btnDeactivateStatus[$key] = 'hidden';
-                        $btnReactivateStatus[$key] = 'show';
+                        $opacityActiveStatus = 'no-opaque';
+                        $cardColorActiveStatus = 'card-inactive';
+                        $btnDeactivateStatus = 'hidden';
+                        $btnReactivateStatus = 'show';
                     } else {
-                        $opacityActiveStatus[$key] = 'opaque';
-                        $cardColorActiveStatus[$key] = 'card-active';
-                        $btnDeactivateStatus[$key] = 'show';
-                        $btnReactivateStatus[$key] = 'hidden';
+                        $opacityActiveStatus = 'opaque';
+                        $cardColorActiveStatus = 'card-active';
+                        $btnReactivateStatus = 'hidden';
+                        $btnDeactivateStatus = 'show';
                     }
                     ?>
 
 
-                    <div class="card <?php echo $cardColorActiveStatus[$key] ?> ">
-                        <div class="card-student-info-wrapper student-info-opaque <?php echo $opacityActiveStatus[$key] ?>">
+                    <div class="card <?php echo $cardColorActiveStatus ?> ">
+                        <div class="card-student-info-wrapper student-info-opaque <?php echo $opacityActiveStatus ?>">
                             <img class="card-avatar" src="<?php echo $img ?>" alt="<?php echo htmlspecialchars($student['username']) ?>" />
                             <div class="card-student-info-container">
                                 <p class="card-info-email"><?php echo $user_email ?></p>
@@ -149,19 +134,19 @@ mysqli_close($conn);
                             </div>
                         </div><!-- END OF STUDENT-INFO-WRAPPER -->
 
-                        <div class="card-student-name-container student-name-opaque <?php echo $opacityActiveStatus[$key] ?>">
+                        <div class="card-student-name-container student-name-opaque <?php echo $opacityActiveStatus ?>">
                             <p class="card-student-name"><?php echo $user_name ?></p>
                             <p class="card-major"><?php echo $major ?></p>
                         </div><!-- END OF STUDENT-NAME-CONTAINER -->
 
-                        <div class="card-code-info-container student-code-opaque <?php echo $opacityActiveStatus[$key] ?>">
+                        <div class="card-code-info-container student-code-opaque <?php echo $opacityActiveStatus ?>">
                             <p class="card-code-info-link"><a href="<?php echo $url ?>"><?php echo $user_name ?>'s Sketches</a> </p>
                             <p class="card-code-info-fav-artist">Favorite Artist: <?php echo $artistic_influence ?></p>
                         </div><!-- END OF STUDENT-CODE-CONTAINER -->
 
                         <div class="card-options-container">
                             <form action="admin.php" method="post">
-                                <button class="card-btn btn-opaque <?php echo $opacityActiveStatus[$key] ?>" name="<?php echo 'reset-' . $user_id ?>" type="submit">Reset</button>
+                                <button class="card-btn btn-opaque <?php echo $opacityActiveStatus ?>" name="<?php echo 'reset-' . $user_id ?>" type="submit">Reset</button>
                             </form>
                             <div class=" admin-dropdown" id="admin-dropdown">
                                 <button class="card-more">
@@ -172,11 +157,11 @@ mysqli_close($conn);
                                 <div class="admin-dropdown-content">
                                     <form action="admin.php" method="post">
                                         <input type="hidden" value="<?php echo $user_id; ?>" name="deactivate" id="deactivate">
-                                        <button class="user-active-status user-active <?php echo $btnDeactivateStatus[$key] ?>" name="deactivate-user" type="submit">Deactivate</button>
+                                        <button class="user-active-status user-active <?php echo $btnDeactivateStatus ?>" name="deactivate-user" type="submit">Deactivate</button>
                                     </form>
                                     <form action="admin.php" method="post">
                                         <input type="hidden" value="<?php echo $user_id; ?>" name="reactivate" id="reactivate">
-                                        <button class="user-active-status user-inactive <?php echo $btnReactivateStatus[$key] ?>" name="reactivate-user" type="submit">Reactivate</button>
+                                        <button class="user-active-status user-inactive <?php echo $btnReactivateStatus ?>" name="reactivate-user" type="submit">Reactivate</button>
                                     </form>
                                     <form action="admin.php" method="post">
                                         <input type="hidden" value="<?php echo $user_id; ?>" name="remove" id="remove">
