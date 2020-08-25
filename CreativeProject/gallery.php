@@ -1,7 +1,9 @@
 <?php
 session_start();
+
 //connect to db
 include 'includes/conn.php';
+
 //query users
 $query = 'SELECT id, email, username, major, artistic_influence, bio, img, p5_url FROM students ORDER BY created_at';
 
@@ -47,30 +49,28 @@ mysqli_close($conn);
                 $url = htmlspecialchars($student['p5_url']);
                 ?>
 
-
-
                 <div class="card">
                     <div class="card-header">
                         <div class="card-cover"></div>
                         <img class="card-avatar" src="<?php echo $img ?>" alt="<?php echo htmlspecialchars($student['username']) ?>" />
                         <h1 class="card-fullname"><?php echo $user_name ?></h1>
                         <h2 class="card-jobtitle"><?php echo $major ?></h2>
-                    </div>
+                    </div><!-- END OF CARD-HEADER -->
                     <div class="card-info">
                         <div class="card-section">
-                            <div class="card-influence">Artistic Influence: <span> <?php echo $artistic_influence ?></span></div>
+                            <div class="card-influence">Favorite Artist: <span> <?php echo $artistic_influence ?></span></div>
                             <div class="card-content">
                                 <div class="card-subtitle">ABOUT</div>
                                 <p class="card-desc"><?php echo $bio ?>
                                 </p>
-                            </div>
-                        </div>
+                            </div><!-- END OF CARD-CONTENT -->
+                        </div><!-- END OF CARD-SECTION -->
                         <button class="card-action" onclick="window.open('<?php echo $url ?>', '_blank')">
                             <span class="card-url"> P5.js Sketches </span>
                             <i class="card-url fa fa-angle-right"> </i>
                         </button>
-                    </div>
-                </div>
+                    </div><!-- END OF CARD-INFO -->
+                </div><!-- END OF CARD -->
 
             <?php endforeach ?>
         </div>
