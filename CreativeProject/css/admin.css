@@ -86,18 +86,6 @@ body {
     color: #343434;
 }
 
-#overlay {
-    display: block;
-    position: absolute;
-    width: 62.5%;
-    height: 92px;
-    margin: 0;
-    background-color: gray;
-    /*   padding: 10px; */
-    bottom: 120px;
-    overflow: hidden
-}
-
 .card-student-info-wrapper {
     display: inherit;
     flex-direction: row;
@@ -225,7 +213,7 @@ body {
 }
 
 .card-inactive {
-    background-color: #F2C94C99;
+    background-color: #F2C94C55;
 }
 
 .admin-dropdown {
@@ -262,6 +250,8 @@ body {
     text-decoration: none;
     text-align: left;
     font-size: 15px;
+    background-color: #fff;
+    border: none;
 }
 
 .admin-dropdown-content .user-active-status:hover {
